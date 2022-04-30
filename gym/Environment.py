@@ -1,44 +1,20 @@
-from random import Random
-from Environment import Environnement
-import defines
+from gym.Client 		import Client
+from gym.StatePlayer 	import StatePlayer
 
-class Agent:
-	def __init__(self, player_num):
-		self.player_num = player_num
-		self.env		= Environnement(player_num)
+from gym 				import defines
 
-
-	def get_action(self, state):
-		pass
-
-	
-	def do_action(self, action):
-		pass
-
-	
-	def get_state(self):
-		pass
+class Environnement:
+	def __init__(self, player_num = -1):
+		'''
+		player_num is the number of the player we want to be (1 or 2) put -1 for any available number.
+		'''
+		self.client = Client(player_num)
+		self.client.connect()
+		self.client.request_type(player_num, defines.Player)
+		self.client.send_action(defines.Nothing)
+		self.player_num = self.client.player
 
 
-class RandomAgent(Agent): 
-	def __init__(self, player_num):
-		self.player_num = player_num
-		self.env		= Environnement(player_num)
-		print("I Am a random agent, please help me get smarter than this !")
-
-
-	def get_action(self, state):
-		"""
-			This is where you put something smart to choose an action.
-
-			Returns
-			-------
-			action   : int
-				The action you think we should do based on the state. (for example defines.Bomb)
-		"""
-		return (Random().choice(defines.action_space))
-
-	
 	def do_action(self, action):
 		"""
 		Takes action and Returns a (state, players, winner) tuple.
@@ -73,10 +49,10 @@ class RandomAgent(Agent):
 			Extra Bomb Count Bonus		: "b", 
 			Extra Speed Bonus			: "s"
 		"""
-		return self.env.do_action(action)
+		self.client.send_action(action)
+		state = self.get_state()
+		return state
 
-	
-	
 	def get_state(self):
 		'''
 		Returns
@@ -104,21 +80,15 @@ class RandomAgent(Agent):
 			Extra Bomb Count Bonus		: "b", 
 			Extra Speed Bonus			: "s"
 		'''
-		return self.env.do_action(defines.Nothing)
+		s, players, w = self.client.get_state()
+		pp = []
+		for p in players:
+			pp.append(StatePlayer(p, self.player_num))
+		return (s, pp, w)
 
 
-import sys
-import time
-if __name__ == "__main__":
-	agent = RandomAgent(int(sys.argv[1]))
-	# agent.env.reset()
-	state1 = agent.get_state()
-	game_over = False
-
-
-	while game_over == False:
-		time.sleep(0.1)
-		state = agent.do_action(agent.get_action(state1))
-		_, _, w = state
-		if (w is not None):
-			game_over = True
+	def reset(self):
+		self.client.reset()
+		state = self.get_state()
+		return state
+	
