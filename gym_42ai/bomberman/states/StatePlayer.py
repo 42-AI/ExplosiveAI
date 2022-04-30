@@ -1,7 +1,8 @@
 from typing import Dict
 
 # (0, 0) is the bottom left, z increases upwards, x to the right
-class PlayerState:
+
+class StatePlayer:
 	'''
 		Note the .enemy variable to identify the enemy
 	'''
