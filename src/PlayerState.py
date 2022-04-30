@@ -24,3 +24,11 @@ class PlayerState:
 		self.dead 		= json_state["dead"]
 		self.x 			= json_state["position"]["x"]
 		self.z 			= json_state["position"]["z"]
+
+	def __str__(self):
+		indent = 5
+		msg = ""
+		msg += f"Player {self.player_num}, dead = {self.dead}\n"
+		msg += f"{' ' * indent}[X, Z] = [{self.x}, {self.z}], speed {self.moveSpeed}\n"
+		msg += f"{' ' * indent}bombs: {self.bombs}, range: {self.bombRange}\n"
+		return msg

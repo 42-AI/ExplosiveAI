@@ -9,7 +9,8 @@ Reset  	= 6
 
 
 # this might be useful
-action_space = [Nothing, Up, Down, Left, Right, Bomb]
+move_space = [Up, Down, Left, Right]
+action_space = move_space + [Nothing, Bomb]
 
 
 # this is TCP client stuff and doesnt really concern you :)
