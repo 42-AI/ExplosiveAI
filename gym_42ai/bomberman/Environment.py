@@ -1,7 +1,7 @@
-from gym.Client 		import Client
-from gym.StatePlayer 	import StatePlayer
+from bomberman.Client 				import Client
+from bomberman.states.StatePlayer 	import StatePlayer
 
-from gym 				import defines
+from bomberman.utils 				import defines
 
 class Environnement:
 	def __init__(self, player_num = -1):

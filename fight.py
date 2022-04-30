@@ -1,6 +1,6 @@
 import time
 
-from gym.Environment import Environnement
+from bomberman.Environment import Environnement
 
 
 
@@ -38,8 +38,10 @@ class Fight():
 
 		print(f"the winner is Player {w}")
 
-if __name__ == "__main__":
-	from gym.agents.RandomAgent import RandomAgent
 
-	fff = Fight(RandomAgent, RandomAgent)
+if __name__ == "__main__":
+	from bomberman.agents.RandomAgent import RandomAgent
+	from NoSuicide.Agent import Mikael
+
+	fff = Fight(RandomAgent, Mikael)
 	fff.fight()

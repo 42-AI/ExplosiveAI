@@ -16,12 +16,12 @@ import time
 import colorama
 from colorama import Fore
 from matplotlib.pyplot import delaxes
-from gym import defines
+from bomberman.utils import defines
 
 HOST 			= "localhost"  # The server's hostname or IP address
 PORT 			= 13000        # The port used by the server
 PATH_TO_BOMBER 	= "/home/yup/Desktop/build/bomber.x86_64"
-PATH_TO_BOMBER = "simulator/build/bomber.x86_64"
+PATH_TO_BOMBER  = "simulator/build/bomber.x86_64"
 SLEEP_TIME		= 5.0 			# If the progRam must start the bomberbuddy it will wait this many seconds for bomberbuddy to start before attempting to connect
 
 dico = {0: "1", 1:"2",2:"B",3:"E",4:"W",5: "C", 6 : "r",7:"b",8:"s"}
