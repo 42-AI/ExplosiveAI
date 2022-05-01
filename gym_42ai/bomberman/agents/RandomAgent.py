@@ -1,7 +1,7 @@
 from random import Random
 
-from bomberman.agents.BaseAgent import BaseAgent
-from bomberman.utils import defines
+from bomberman.agents.BaseAgent	import BaseAgent
+from bomberman					import defines
 
 
 class RandomAgent(BaseAgent):

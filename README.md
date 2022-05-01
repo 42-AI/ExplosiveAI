@@ -15,9 +15,10 @@ This is a client to control a player in a BomberBuddy game. The purpose is to ha
 	- [Thanks](#thanks)
 
 
+<br/>
+
 ## How it works
 
-<br/>
 
 ### Download the game
 
@@ -104,5 +105,4 @@ If you want to help dev on the project contact us at contact@42ai.fr.
 <br/>
 
 ## Thanks
-
 Thank you for participating in the beta of this project and helping 42AI organize cool competitions in the school
