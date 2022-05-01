@@ -8,31 +8,40 @@ import os
 import subprocess
 import time
 
-# from enum import Enum
-
-# import keyboard  # using module keyboard?\
-
 
 import colorama
 from colorama import Fore
 from matplotlib.pyplot import delaxes
-from bomberman.utils import defines
 
-HOST 			= "localhost"  # The server's hostname or IP address
-PORT 			= 13000        # The port used by the server
-PATH_TO_BOMBER 	= "/home/yup/Desktop/build/bomber.x86_64"
-PATH_TO_BOMBER  = "simulator/build/bomber.x86_64"
-SLEEP_TIME		= 5.0 			# If the progRam must start the bomberbuddy it will wait this many seconds for bomberbuddy to start before attempting to connect
+from bomberman						import defines
+from bomberman.states.State			import State
+from bomberman.states.StatePlayer	import StatePlayer
 
-dico = {0: "1", 1:"2",2:"B",3:"E",4:"W",5: "C", 6 : "r",7:"b",8:"s"}
+# HOST 			= "localhost"  # The server's hostname or IP address
+# PORT 			= 13000        # The port used by the server
+# PATH_TO_BOMBER 	= "/home/yup/Desktop/build/bomber.x86_64"
+# PATH_TO_BOMBER  = "simulator/build/bomber.x86_64"
+# SLEEP_TIME		= 5.0 			# If the progRam must start the bomberbuddy it will wait this many seconds for bomberbuddy to start before attempting to connect
+
+# dico = {
+# 	0:"1",
+# 	1:"2",
+# 	2:"B",
+# 	3:"E",
+# 	4:"W",
+# 	5:"C",
+# 	6:"r",
+# 	7:"b",
+# 	8:"s"
+# }
 
 
-def itemtopos(item):
+def get_item_position(item):
 	return round(item["position"]["x"]), round(item["position"]["z"])
 
 
 class  Client():
-	def __init__(self, player):
+	def __init__(self, player: int):
 		self.board			= []
 		self.h 				= 11
 		self.w 				= 11
@@ -50,19 +59,19 @@ class  Client():
 		print("CONNNNECTING\n\n\n\n")
 		try:
 			self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			self.sock.connect((HOST, PORT))
+			self.sock.connect((defines.HOST, defines.PORT))
 			self.connected = True
 		except:
-			subprocess.Popen([PATH_TO_BOMBER])
-			time.sleep(SLEEP_TIME)
+			subprocess.Popen([defines.PATH_TO_BOMBER])
+			time.sleep(defines.SLEEP_TIME)
 			self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			self.sock.connect((HOST, PORT))
+			self.sock.connect((defines.HOST, defines.PORT))
 			self.connected = True
 		print("CONNNNECTEEED\n\n\n\n")
 		
 		
 		
-	def request_type(self, num = -1, typo = defines.Player ,passw = "default"):
+	def request_type(self, num:int = -1, typo = defines.Player ,passw = "default"):
 		'''
 		num -1 for first available player. only works if player not instantiated;
 		'''
@@ -101,18 +110,19 @@ class  Client():
 
 		for i in range(self.h):
 			self.board.append(([" "] * (self.w)))
-		a = json.loads(msg)
-		for e in a:
-			if (e["type"] == -1):
-				self.winner = e["winner"]
+		
+		array_of_all_items = json.loads(msg)
+		for item in array_of_all_items:
+			if (item["type"] == -1):
+				self.winner = item["winner"]
 				continue;
-			x,y = itemtopos(e)
-			self.board[y][x] = dico[e["type"]]
-			try:
-				if (e["is_player"] == True):
-					self.player_states.append(e)
-			except:
-				continue
+			
+			x, y = get_item_position(item)
+			item_type = item["type"]
+			self.board[y][x] = defines.dic_item_type_to_str[item_type]
+
+			if item.get("is_player", False) == True:
+				self.player_states.append(item)
 
 
 	def printboard(self):
@@ -156,12 +166,26 @@ class  Client():
 	# 			self.send_action(Reset)
 
 	
-	def get_state(self):
-		"""
-			Returns a (state, players, winner) tuple
-			players is an array of json objects representing the players
-			winner is None if no one has won yet, otherwise it is 1 or 2
-			state is an array of size (11, 11) containing the following strings
+	def get_state(self) -> State:
+		'''
+		Returns
+		-------
+		state: State
+			board   : StateBoard
+				board.board is an array of strings of size (11, 11) representing the board, 
+				player positions are rounded to the grid, 
+				for exact positions refer to the players array
+
+			players : array
+				array of PlayerState objects representing the players
+
+			winner   : int
+				1, 2 or None if game is not over.
+
+		Notes
+		-----
+			UNDERSTANDING THE BOARD ARRAY
+			Here are the strings and what they represent:
 			Player1		: "1",
 			Player2		: "2", 
 			Bomb		: "B", 
@@ -171,6 +195,9 @@ class  Client():
 			Bomb explosion Range Bonus 	: "r", 
 			Extra Bomb Count Bonus		: "b", 
 			Extra Speed Bonus			: "s"
-
-		"""
-		return (self.board, self.player_states, self.winner)
+		'''
+		pp = []
+		for p in self.player_states:
+			pp.append(StatePlayer(p, self.player))
+		s = State(self.board, pp, self.winner)
+		return s

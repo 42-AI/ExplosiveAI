@@ -1,10 +1,11 @@
 from bomberman.Client 				import Client
 from bomberman.states.StatePlayer 	import StatePlayer
 
-from bomberman.utils 				import defines
+from bomberman 		 				import defines
+from bomberman.states.State			import State
 
 class Environnement:
-	def __init__(self, player_num = -1):
+	def __init__(self, player_num: int = -1):
 		'''
 		player_num is the number of the player we want to be (1 or 2) put -1 for any available number.
 		'''
@@ -15,7 +16,7 @@ class Environnement:
 		self.player_num = self.client.player
 
 
-	def do_action(self, action):
+	def do_action(self, action: int) -> State:
 		"""
 		Takes action and Returns a (state, players, winner) tuple.
 
@@ -53,22 +54,25 @@ class Environnement:
 		state = self.get_state()
 		return state
 
-	def get_state(self):
+	def get_state(self) -> State:
 		'''
 		Returns
 		-------
-		state   : array
-			An array of strings of size (11, 11) representing the board, player positions are rounded to the grid, for exact positions refer to the players array
+		state: State
+			board   : StateBoard
+				board.board is an array of strings of size (11, 11) representing the board, 
+				player positions are rounded to the grid, 
+				for exact positions refer to the players array
 
-		players : array
-			array of PlayerState objects representing the players
+			players : array
+				array of PlayerState objects representing the players
 
-		winner   : int
-			1, 2 or None if game is not over.
+			winner   : int
+				1, 2 or None if game is not over.
 
 		Notes
 		-----
-			UNDERSTANDING THE STATE ARRAY
+			UNDERSTANDING THE BOARD ARRAY
 			Here are the strings and what they represent:
 			Player1		: "1",
 			Player2		: "2", 
@@ -80,14 +84,10 @@ class Environnement:
 			Extra Bomb Count Bonus		: "b", 
 			Extra Speed Bonus			: "s"
 		'''
-		s, players, w = self.client.get_state()
-		pp = []
-		for p in players:
-			pp.append(StatePlayer(p, self.player_num))
-		return (s, pp, w)
+		return self.client.get_state()
 
 
-	def reset(self):
+	def reset(self) -> State:
 		self.client.reset()
 		state = self.get_state()
 		return state

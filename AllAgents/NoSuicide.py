@@ -1,14 +1,14 @@
-import abc
+from bomberman.agents.BaseAgent		import BaseAgent
+from bomberman.states.State			import State
+from bomberman						import defines
 
-from bomberman					import defines
-from bomberman.states.State		import State
+from random import Random
 
-class BaseAgent(abc.ABC):
+class NoSuicide(BaseAgent):
 	def __init__(self, player_num: int) -> None:
-		self.player_num = player_num
+		super().__init__(player_num)
 
 
-	@abc.abstractmethod
 	def get_action(self, state: State) -> int:
 		"""Choose an action from a given state
 
@@ -27,5 +27,4 @@ class BaseAgent(abc.ABC):
 						from bomberman import defines
 						return defines.Bomb
 		"""
-		return defines.Nothing
-
+		return (Random().choice(defines.move_space))
