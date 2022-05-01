@@ -1,4 +1,5 @@
-from typing import Dict
+from typing import Dict, Tuple
+from colorama import Back
 
 class StatePlayer:
 	'''StatePlayer containing all the player information
@@ -46,24 +47,33 @@ class StatePlayer:
 		self.z :int		= json_state["position"]["z"]
 
 
-	def get_position(self):
+	def get_position(self) -> Tuple[int, int]:
 		return round(self.x), round(self.z)
 
+	def get_position_float(self) -> Tuple[float, float]:
+		return self.x, self.z
 
 	def __str__(self):
 		indent = 5
-		msg = ""
 
+		status = "is 💀" if self.dead else ""
 		repr_dict = {
 			1: "1️⃣ ",
 			2: "2️⃣ "
 		}
-		status = "is 💀" if self.dead else ""
-		msg += f"Player {repr_dict[self.player_num]} {status}\n"
+
+		msg = ""
+		if self.player_num == 1:
+			msg += f"{Back.RED}"
+		elif self.player_num == 2:
+			msg += f"{Back.BLUE}"
+		msg += f"Player"
+		msg += f"{Back.RESET}"
+		msg += f" {repr_dict[self.player_num]} {status}\n"
 
 		msg += f"{' ' * indent}"
 		# msg += f"[X, Z] [{self.get_position()}], "
-		msg += f"📍 {self.get_position()}\n"
+		msg += f"📍 {self.get_position_float()}\n"
 		msg += f"{' ' * indent}"
 		# msg += f"speed {self.moveSpeed}\n"
 		msg += f"👟 {self.moveSpeed}\n"

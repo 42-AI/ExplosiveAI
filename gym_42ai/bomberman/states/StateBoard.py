@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from typing import List
+from bomberman.states.StatePlayer import StatePlayer
+from colorama import Back
 
 @dataclass
 class StateBoard:
@@ -21,7 +23,9 @@ class StateBoard:
 	"""
 	board: List[List[str]]
 
-	def __str__(self):
+	def str_with_back(self, player_1: StatePlayer=None, player_2: StatePlayer=None):
+		p_1 = player_1.get_position() if player_1 else (-1, -1)
+		p_2 = player_2.get_position() if player_2 else (-1, -1)
 		repr_dict = {
 			"1": "1️⃣ ",
 			"2": "2️⃣ ",
@@ -31,13 +35,34 @@ class StateBoard:
 			"C": "📦",
 			"r": "📏",
 			"b": "🎒",
-			"s": "🏃‍♀️",
+			"s": "👟",
 			" ": "  ",
 		}
 
 		msg = f""
-		for line in self.board:
-			for block in line:
-				msg += f"{repr_dict[block]} "
+		# X indices
+		msg += f" "
+		for x, line in enumerate(self.board):
+			msg += f"  {x}"
+		msg += f" 👉 x\n"
+		# Board
+		for z, line in enumerate(self.board):
+			msg += f"{z:<3}"
+			for x, block in enumerate(line):
+				coord = (x, z)
+				if p_1 == coord:
+					msg += f"{Back.RED}"
+				if p_2 == coord:
+					msg += f"{Back.BLUE}"
+				msg += f"{repr_dict[block]}"
+				if p_1 == coord or p_2 == coord:
+					msg += f"{Back.RESET}"
+				msg += f" "
 			msg += f"\n"
+		msg += f"👇\n"
+		msg += f" z\n"
+
 		return msg
+
+	def __str__(self):
+		return self.str_with_back()

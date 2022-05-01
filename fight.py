@@ -24,7 +24,7 @@ class Fight():
 
 		game_over = False
 		while game_over == False:
-			time.sleep(0.001)
+			time.sleep(0.01)
 
 			# Player 1
 			action_1 = self.agent_1.get_action(state_1)
@@ -56,6 +56,7 @@ if __name__ == "__main__":
 	from bomberman.states.State			import State
 	from AllAgents.NoSuicide import NoSuicide
 	from AllAgents.FindAgent import FindAgent
+	from AllAgents.bob.Agent import BobAgent
 
 	import importlib
 
@@ -63,5 +64,5 @@ if __name__ == "__main__":
 
 	print_classes(i)
 
-	fff = Fight(i.FindAgent, NoSuicide)
+	fff = Fight(BobAgent, NoSuicide)
 	fff.fight()

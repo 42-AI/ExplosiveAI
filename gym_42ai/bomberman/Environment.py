@@ -1,5 +1,5 @@
 from bomberman.Client 				import Client
-from bomberman.states.StatePlayer 	import StatePlayer
+from bomberman.defines				import t_action
 
 from bomberman 		 				import defines
 from bomberman.states.State			import State
@@ -16,7 +16,7 @@ class Environnement:
 		self.player_num = self.client.player
 
 
-	def do_action(self, action: int) -> State:
+	def do_action(self, action: t_action) -> State:
 		"""
 		Takes action and Returns a (state, players, winner) tuple.
 
