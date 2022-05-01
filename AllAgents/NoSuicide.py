@@ -1,5 +1,6 @@
 from bomberman.agents.BaseAgent		import BaseAgent
 from bomberman.states.State			import State
+from bomberman.defines				import t_action
 from bomberman						import defines
 
 from random import Random
@@ -9,7 +10,7 @@ class NoSuicide(BaseAgent):
 		super().__init__(player_num)
 
 
-	def get_action(self, state: State) -> int:
+	def get_action(self, state: State) -> t_action:
 		"""Choose an action from a given state
 
 		This is where you put something smart to choose an action.

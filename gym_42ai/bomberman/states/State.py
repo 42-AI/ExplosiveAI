@@ -1,11 +1,12 @@
 from dataclasses import dataclass, field
 
-from typing import List
+from typing import List, Tuple
 from typing import Dict
 
 from bomberman.states.StatePlayer import StatePlayer
 from bomberman.states.StateBoard import StateBoard
 
+from colorama import Back
 
 @dataclass
 class State:
@@ -19,7 +20,7 @@ class State:
 		self.board = StateBoard(self.raw_board)
 
 
-	def as_tuple(self):
+	def as_tuple(self) -> Tuple[List[List[str]], List[StatePlayer], bool]:
 		"""Returns a (board, players, winner) tuple
 		
 		board is an array of size (11, 11) containing the following strings
@@ -46,7 +47,8 @@ class State:
 
 	def __str__(self):
 		msg = f""
-		msg += f"{self.board}\n"
+		s_board = self.board.str_with_back(self.players[0], self.players[1])
+		msg += f"{s_board}\n"
 		msg += f"{self.players[0]}\n"
 		msg += f"{self.players[1]}\n"
 		msg += f"{self.winner = }\n"

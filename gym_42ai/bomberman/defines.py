@@ -1,14 +1,19 @@
+from typing import NewType
+
 ################################################################################
 # Actions                                                                      #
 ################################################################################
+
+t_action = NewType('t_action', int)
+
 # ! these are the values you put in do_action()
-Nothing = 0
-Up      = 1
-Down   	= 2
-Left   	= 3
-Right  	= 4     
-Bomb   	= 5
-Reset  	= 6
+Nothing = t_action(0)
+Up      = t_action(1)
+Down   	= t_action(2)
+Left   	= t_action(3)
+Right  	= t_action(4)     
+Bomb   	= t_action(5)
+Reset  	= t_action(6)
 
 # this might be useful
 move_space = [Up, Down, Left, Right]

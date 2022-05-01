@@ -1,7 +1,9 @@
 from random import Random
 
-from bomberman.agents.BaseAgent	import BaseAgent
-from bomberman					import defines
+from bomberman.agents.BaseAgent		import BaseAgent
+from bomberman.states.State			import State
+from bomberman						import defines
+from bomberman.defines				import t_action
 
 
 class RandomAgent(BaseAgent):
@@ -9,7 +11,7 @@ class RandomAgent(BaseAgent):
 		self.player_num = player_num
 		print("I Am a random agent, please help me get smarter than this !")
 
-	def get_action(self, state):
+	def get_action(self, state: State) -> t_action:
 		"""
 			This is where you put something smart to choose an action.
 

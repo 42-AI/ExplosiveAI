@@ -1,5 +1,6 @@
 from bomberman.agents.BaseAgent		import BaseAgent
 from bomberman.states.State			import State
+from bomberman.defines				import t_action
 from bomberman						import defines
 
 from bomberman.states.StatePlayer	import StatePlayer
@@ -18,7 +19,7 @@ class FindAgent(BaseAgent):
 		super().__init__(player_num)
 		
 
-	def _direction_to_enemy(self, mine: StatePlayer, their: StatePlayer) -> int:
+	def _direction_to_enemy(self, mine: StatePlayer, their: StatePlayer) -> t_action:
 		diff_horizontal = mine.x - their.x
 		diff_vertical = mine.z - their.z
 
@@ -36,7 +37,7 @@ class FindAgent(BaseAgent):
 		return action
 
 
-	def get_action(self, state: State) -> int:
+	def get_action(self, state: State) -> t_action:
 		"""Choose an action from a given state
 
 		This is where you put something smart to choose an action.
