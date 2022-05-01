@@ -38,7 +38,6 @@ class BobAgent(BaseAgent):
 			walkable=False
 		)
 		if solution:
-			print(f"{solution = }")
 			action = solution[0]
 		x, z = get_new_coordinates(
 			coordinates=me.get_position(),
