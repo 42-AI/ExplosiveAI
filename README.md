@@ -1,8 +1,11 @@
 # Explosive AI
 
+![Bob Agent Demo](./assets/Demo_Bob.gif)
+
 This is a client to control a player in a BomberBuddy game. The purpose is to have a competition where AI agents and algorithms try to blow each other up! However this project is in beta and probably has some bugs so please raise an issue or send me a message on the 42 slack (jbarment or ldevelle).  
 
 <br/>
+
 
 - [Explosive AI](#explosive-ai)
 	- [How it works](#how-it-works)

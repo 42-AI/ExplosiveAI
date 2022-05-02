@@ -43,8 +43,8 @@ class Node():
 
 	def cost(self):
 		c = self.coordinates
-		lens = [abs(c[0] - x) + abs(c[1] - z) for x, z in self.ends]
 		h = len(self.history)
+		lens = [abs(c[0] - x) + abs(c[1] - z) for x, z in self.ends]
 		return h + min(lens)
 	
 	def __eq__(self, __o: object) -> bool:
