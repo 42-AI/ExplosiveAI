@@ -61,14 +61,15 @@ class BobAgent(BaseAgent):
 		if coordinates in blasts:
 			accessible_coords = get_accessible_coordinates(board, coordinates)
 			safe_places = [c for c in accessible_coords if not c in blasts]
-			a_star = A_Star(board)
-			solution = a_star.launch_Astar(
-				begin=coordinates, 
-				ends=safe_places,
-				walkable=True,
-			)
-			if solution:
-				action = solution[0]
+			if len(safe_places):
+				a_star = A_Star(board)
+				solution = a_star.launch_Astar(
+					begin=coordinates, 
+					ends=safe_places,
+					walkable=True,
+				)
+				if solution:
+					action = solution[0]
 		return action
 	
 
