@@ -25,7 +25,7 @@ setuptools.setup(
     install_requires=[
 		"setuptools>=42",
 		"colorama >= 0.4.4",
-		"matplotlib",
+		"matplotlib >= 3.5.1",
 		"wheel",
 	],
 	python_requires='>=3.8',
