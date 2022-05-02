@@ -10,10 +10,10 @@ from colorama import Back
 
 @dataclass
 class State:
-	raw_board: List[List[str]]
-	board: StateBoard = field(init=False)
-	players: List[StatePlayer]
-	winner: bool
+	raw_board: 	List[List[str]]
+	board: 		StateBoard = field(init=False)
+	players: 	List[StatePlayer]
+	winner: 	bool
 
 
 	def __post_init__(self):

@@ -24,6 +24,9 @@ def get_item_position(item):
 
 
 class  Client():
+	'''
+		This is the class that actually connects to the bomber game
+	'''
 	def __init__(self, player: int):
 		self.board			= []
 		self.h 				= 11
@@ -55,8 +58,12 @@ class  Client():
 		
 		
 	def request_type(self, num:int = -1, typo = defines.Player ,passw = "default"):
-		'''
-		num -1 for first available player. only works if player not instantiated;
+		'''_summary_
+
+		Args:
+			num (int, optional): Requested player number, -1 (first available) only works if player not instantiated. Defaults to -1.
+			typo (_type_, optional): requested type of connection, relates to some game-side server stuff. Defaults to defines.Player.
+			passw (str, optional): password to connect, not implemented for now. Defaults to "default".
 		'''
 		msg = {"requestedType" : typo, "pass" : passw, "playerNum" : num}
 		self.send_msg(msg)
