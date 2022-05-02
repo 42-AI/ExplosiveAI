@@ -19,23 +19,24 @@ This is a client to control a player in a BomberBuddy game. The purpose is to ha
 
 ## How it works
 
+### Requirements
+You need to have Python 3.8, if not ask google how to get it.
 
-### Download the game
-
-#### Automatic way
-
-Normally you should be able to run
+Clone the repo
 
 ```sh
-./scripts/download_simulator.sh
+git clone https://github.com/42-AI/ExplosiveAI.git
+cd ExplosiveAI
 ```
 
-<!-- And it will download you the simulator in your project directory under `./simulator/build/bomber.x86_64` -->
+Install some dependencies
 
-Unfortunatelly, `gdown` does not seems to work most of the time (do not hesitate to propose a pull request to solve this issue)
+```sh
+python3.8 -m pip install --upgrade pip
+python3.8 -m pip install build
+```
 
-
-#### Manual way
+### Download the game
 
 First you need to download the game
 
@@ -43,12 +44,17 @@ First you need to download the game
 
 - Linux: [https://drive.google.com/file/d/19j9jLHTMItYzpvW5AvbufL0z1VLRaVST](https://drive.google.com/file/d/19j9jLHTMItYzpvW5AvbufL0z1VLRaVST)
 
-Then you need to extract it under the directory `simulator` in this project directory.
+Then you need to extract it under the directory `simulator` in this project directory. So that the structure looks like this
 
-If your file has been downloaded into your `Downloads` directory you may run: 
-
-```sh
-tar -xvf ~/Downloads/bomber_linux.tar.xz -C simulator/
+```
+ExplosiveAI
+└── simulator
+    └── build
+        ├── bomber_Data
+        ├── bomber.x86_64
+        ├── LinuxPlayer_s.debug
+        ├── UnityPlayer_s.debug
+        └── UnityPlayer.so
 ```
 
 Finnaly you can had the executable rights
@@ -61,7 +67,7 @@ chmod +x simulator/build/bomber.x86_64
 
 ### Install the Package
 
-If you already installed the package you may want to start by running:
+**If you already installed the package** you may want to start by running:
 
 ```sh
 pip uninstall bomberman 
@@ -70,13 +76,13 @@ pip uninstall bomberman
 You may now build the wheel (the type of file that pip uses to install a package)
 
 ```sh
-python -m build 
+python3.8 -m build 
 ```
 
-You may now install our beautiful package
+You may now install our ***beautiful*** package
 
 ```sh
-pip install dist/bomberman-0.1.0-py3-none-any.whl
+python3.8 -m pip install dist/bomberman-0.1.0-py3-none-any.whl
 ```
 
 <br/>
@@ -87,7 +93,7 @@ pip install dist/bomberman-0.1.0-py3-none-any.whl
 You can now ***start the game*** and run fight.py with python3.
 
 ```sh
-python fight.py
+python3.8 fight.py
 ```
 
 The code to `NoSuicide/Agent.py` contains what you need to know to start building an agent.  
@@ -98,7 +104,7 @@ The code to `NoSuicide/Agent.py` contains what you need to know to start buildin
 
 You can help by reporting bugs or suggesting features / improvements.  
 
-Don't be shy to say something looks wierd or stupid or to ask for stuff (i.e I wanna be able to play against my AI)  
+Don't be shy to say something looks wierd or stupid or to ask for stuff.
 
 If you want to help dev on the project contact us at contact@42ai.fr.  
 

@@ -19,7 +19,7 @@ COLOR_RESET="\e[0m"
 # G-Drive URLS                       #
 ######################################
 GDRIVE_URL_MAC"https://drive.google.com/file/d/1XuEEzePBdoZVaM0SrQ857k6HqccUKXn"
-GDRIVE_URL_LINUX="https://drive.google.com/file/d/1zNIrXT5JbrAdudhubCN9JCn-Tn7tBxLs"
+GDRIVE_URL_LINUX="https://drive.google.com/file/d/19j9jLHTMItYzpvW5AvbufL0z1VLRaVST"
 
 ######################################
 # PATHs                              #
@@ -57,11 +57,12 @@ fi
 ################################################################################
 echo -e $COLOR_YELLOW "Checking if gdown is installed" $COLOR_RESET 
 
-python3 -c 'import gdown' 1>&- 2>&-
+python3.8 -c 'import gdown' 1>&- 2>&-
 if [ $? -ne 0 ]; then
     echo -e $COLOR_RED "ERROR: gdown is not installed" $COLOR_RESET
     echo "You can install gdown by running: "
-    echo -e "> " $COLOR_YELLOW "pip install gdown" $COLOR_RESET
+    echo -e "> " $COLOR_YELLOW "python3.8 -m pip install --upgrade pip" $COLOR_RESET
+    echo -e "> " $COLOR_YELLOW "python3.8 -m pip install gdown" $COLOR_RESET
 	exit 1
 fi
 
