@@ -12,3 +12,14 @@
 - Add bomb timers in state
 - Add connection timeout for players for competition
 - Add points on bonus pickup to tiebreak the game after time limit and avoid infinite games
+
+## Known bugs
+
+- The explosion sometimes clips the player on the left of it ! (maybe scale down the explosion)
+- Player List on reset or at death
+
+## PRIORITIES
+
+- RESET FIX
+- READY
+- EXPORT UNITY PROJECT

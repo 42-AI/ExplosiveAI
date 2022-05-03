@@ -8,6 +8,8 @@ from bomberman.states.StateBoard import StateBoard
 
 from colorama import Back
 
+from .. import defines
+
 @dataclass
 class State:
 	raw_board: 	List[List[str]]
@@ -47,9 +49,11 @@ class State:
 
 	def __str__(self):
 		msg = f""
-		s_board = self.board.str_with_back(self.players[0], self.players[1])
+		player_missing_fix = [self.players[x] if x < len(self.players) else None for x in range(defines.NUM_PLAYERS)]
+		# This fixes the out of bounds in case of dead or missing players in the line below 
+		s_board = self.board.str_with_back(player_missing_fix[0], player_missing_fix[1])
 		msg += f"{s_board}\n"
-		msg += f"{self.players[0]}\n"
-		msg += f"{self.players[1]}\n"
+		msg += f"{player_missing_fix[0]}\n"
+		msg += f"{player_missing_fix[1]}\n"
 		msg += f"{self.winner = }\n"
 		return msg

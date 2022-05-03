@@ -32,7 +32,7 @@ class Fight():
 
 			# Player 2
 			action_2 = self.agent_2.get_action(state_2)
-			state_2 = self.env_2.do_action(action_2)
+			state_2 = self.env_2.do_action(0)
 
 			# b, pp, w = state_2
 			# s = State(b, pp, w)
@@ -40,7 +40,8 @@ class Fight():
 			if (state_2.winner is not None):
 				game_over = True
 
-		print(f"the winner is Player {w}")
+		# print(f"the winner is Player {w}")
+		print(f"Game Over !")
 
 
 import sys, inspect
