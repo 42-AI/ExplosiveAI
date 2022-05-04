@@ -6,7 +6,6 @@
 
 ## Improvements & Ideas
 
-- Add a Ready method to the agent
 - Add a Controller type connection (to start, reset and monitor winners)
 - Add Passwords for the competition (and remove the players ability to reset the game)
 - Add bomb timers in state

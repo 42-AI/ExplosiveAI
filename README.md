@@ -2,6 +2,10 @@
 
 ![Bob Agent Demo](./assets/Demo_Bob.gif)
 
+**THIS IS A DEVELOPEMENT BRANCH FOR TESTING, BEWARE**
+
+**Download the dev release of the game and the dev package with the links below**
+
 This is a client to control a player in a BomberBuddy game. The purpose is to have a competition where AI agents and algorithms try to blow each other up! However this project is in beta and probably has some bugs so please raise an issue or send me a message on the 42 slack (jbarment or ldevelle).  
 
 <br/>
@@ -28,6 +32,7 @@ Clone the repo
 
 ```sh
 git clone https://github.com/42-AI/ExplosiveAI.git
+git checkout ready_check
 cd ExplosiveAI
 ```
 
@@ -93,8 +98,20 @@ python3.8 -m pip install dist/bomberman-0.1.0-py3-none-any.whl
 You can now ***start the game*** and run fight.py with python3.
 
 ```sh
-python3.8 fight.py
+python3.8 TestFighter_vs_Immobile.py
 ```
+
+To make two different agents fight run these commands **In two different terminals**
+
+```sh
+python3.8 TestFighter.py
+```
+
+```sh
+python3.8 TestFighterTwo.py
+```
+
+At any moment you can control the players with your keyboard 1:(arrows and space) 2:(wasd and enter)
 
 The code to `NoSuicide/Agent.py` contains what you need to know to start building an agent.  
 
