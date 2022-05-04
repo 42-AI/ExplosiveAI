@@ -7,13 +7,14 @@ from typing import NewType
 t_action = NewType('t_action', int)
 
 # ! these are the values you put in do_action()
-Nothing = t_action(0)
-Up      = t_action(1)
-Down   	= t_action(2)
-Left   	= t_action(3)
-Right  	= t_action(4)     
-Bomb   	= t_action(5)
-Reset  	= t_action(6)
+Nothing 	= t_action(0)
+Up      	= t_action(1)
+Down   		= t_action(2)
+Left   		= t_action(3)
+Right  		= t_action(4)     
+Bomb   		= t_action(5)
+Reset  		= t_action(6)
+ReadyCheck	= t_action(7)
 
 # this might be useful
 move_space = [Up, Down, Left, Right]

@@ -20,6 +20,6 @@
 
 ## PRIORITIES
 
-- RESET FIX
+- Flip terminal map
 - READY
 - EXPORT UNITY PROJECT

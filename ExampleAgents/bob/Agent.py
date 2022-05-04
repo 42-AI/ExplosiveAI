@@ -6,18 +6,18 @@ from bomberman						import defines
 from bomberman.states.StatePlayer	import StatePlayer
 from typing import List, Tuple
 
-from AllAgents.bob.utils import (
+from ExampleAgents.bob.utils import (
 	get_players,
 	move_from_to,
 )
-from AllAgents.bob.coordinates.get_coordinates import (
+from ExampleAgents.bob.coordinates.get_coordinates import (
 	get_new_coordinates,
 	get_all_bomb_coordinates,
 	get_blasts_coordinates,
 	get_accessible_coordinates,
 )
 
-from AllAgents.bob.A_Star import A_Star
+from ExampleAgents.bob.A_Star import A_Star
 
 class BobAgent(BaseAgent):
 	def __init__(self, player_num: int) -> None:

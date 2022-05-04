@@ -2,7 +2,7 @@ from bomberman						import defines
 from bomberman.defines				import t_action
 from bomberman.states.StatePlayer	import StatePlayer
 
-from AllAgents.bob.coordinates.is_coordinates import (
+from ExampleAgents.bob.coordinates.is_coordinates import (
 	is_valid_coordinates, 
 	is_safe_coordinates, 
 	is_walkable_coordinates

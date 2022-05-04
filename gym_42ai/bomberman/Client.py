@@ -54,8 +54,7 @@ class  Client():
 			self.sock.connect((defines.HOST, defines.PORT))
 			self.connected = True
 		print("CONNNNECTEEED\n\n\n\n")
-		
-		
+			
 		
 	def request_type(self, num:int = -1, typo = defines.Player ,passw = "default"):
 		'''_summary_
@@ -69,6 +68,17 @@ class  Client():
 		self.send_msg(msg)
 		self.recv_msg()
 		self.parse_request()
+
+
+	def wait_everyone_ready(self):
+		while (True):
+			time.sleep(0.05)
+			msg = {"action" : defines.ReadyCheck, "playerNum" : self.player, "pass": "lolpas"}
+			self.send_msg(msg)
+			self.recv_msg()
+			res = json.loads(self.msg)
+			if (res["ready"] == True):
+				break;
 
 
 	def close(self):
@@ -140,21 +150,6 @@ class  Client():
 	def reset(self):
 		self.winner = None
 		self.send_action(defines.Reset)
-
-	# def loopyloop(self):
-	# 	while(True):
-	# 		if keyboard.is_pressed('w'):
-	# 			self.send_action(Up)
-	# 		elif keyboard.is_pressed('a'):
-	# 			self.send_action(Left)
-	# 		elif keyboard.is_pressed('s'):
-	# 			self.send_action(Down)
-	# 		elif keyboard.is_pressed('d'):
-	# 			self.send_action(Right)
-	# 		elif keyboard.is_pressed(' '):
-	# 			self.send_action(Bomb)
-	# 		elif keyboard.is_pressed('r'):
-	# 			self.send_action(Reset)
 
 	
 	def get_state(self) -> State:

@@ -2,14 +2,14 @@ from bomberman						import defines
 from bomberman.defines				import t_action
 
 
-from AllAgents.bob.coordinates.get_coordinates import (
+from ExampleAgents.bob.coordinates.get_coordinates import (
 	get_new_coordinates,
 	get_all_bomb_coordinates,
 	get_blasts_coordinates,
 	get_accessible_coordinates,
 )
 
-from AllAgents.bob.coordinates.is_coordinates import (
+from ExampleAgents.bob.coordinates.is_coordinates import (
 	is_valid_coordinates, 
 	is_safe_coordinates, 
 	is_walkable_coordinates
