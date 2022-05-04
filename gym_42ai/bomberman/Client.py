@@ -79,6 +79,7 @@ class  Client():
 			res = json.loads(self.msg)
 			if (res["ready"] == True):
 				break;
+		self.send_action(defines.Nothing)
 
 
 	def close(self):

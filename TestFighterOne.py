@@ -11,13 +11,13 @@ if __name__ == "__main__":
 	from ExampleAgents.bob.Agent 		import BobAgent
 
 	# We connect to the game
-	game_connection = Environnement()
+	game_connection = Environnement(player_num=1)
 
 	# We wait for both players to Be connected
 	game_connection.client.wait_everyone_ready()
 
 	# We create our agent (the algorithm that plays the game)
-	agent 		= BobAgent(game_connection.player_num)
+	agent 		= BobAgent(player_num=1)
 
 	# We get the initial state of the game
 	state 		= game_connection.get_state()
