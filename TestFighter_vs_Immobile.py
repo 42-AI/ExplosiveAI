@@ -36,6 +36,5 @@ if __name__ == "__main__":
 		if (state.winner is not None):
 			game_over = True
 			print(f"The winner is {state.winner}")
-			print(f"Louis comment je trouve le num du winner ?")
 
 

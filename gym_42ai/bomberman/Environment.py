@@ -12,7 +12,7 @@ class Environnement:
 		self.client = Client(player_num)
 		self.client.connect()
 		self.client.request_type(player_num, defines.Player)
-		# self.client.send_action(defines.Nothing)
+		self.client.send_action(defines.Nothing)
 		self.player_num = self.client.player
 
 

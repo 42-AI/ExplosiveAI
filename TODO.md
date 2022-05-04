@@ -16,10 +16,9 @@
 ## Known bugs
 
 - The explosion sometimes clips the player on the left of it ! (maybe scale down the explosion)
-- Player List on reset or at death
 
 ## PRIORITIES
 
 - Flip terminal map
-- READY
+- READY **TEST**
 - EXPORT UNITY PROJECT

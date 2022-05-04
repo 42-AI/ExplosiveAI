@@ -76,6 +76,7 @@ class  Client():
 			msg = {"action" : defines.ReadyCheck, "playerNum" : self.player, "pass": "lolpas"}
 			self.send_msg(msg)
 			self.recv_msg()
+			print("msg; ", self.msg)
 			res = json.loads(self.msg)
 			if (res["ready"] == True):
 				break;
