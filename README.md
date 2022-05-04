@@ -9,9 +9,8 @@ This is a client to control a player in a BomberBuddy game. The purpose is to ha
 
 - [Explosive AI](#explosive-ai)
 	- [How it works](#how-it-works)
+		- [Requirements](#requirements)
 		- [Download the game](#download-the-game)
-			- [Automatic way](#automatic-way)
-			- [Manual way](#manual-way)
 		- [Install the Package](#install-the-package)
 		- [FIGHT !](#fight-)
 	- [How you can help ?](#how-you-can-help-)
@@ -46,6 +45,14 @@ First you need to download the game
 - mac: [https://drive.google.com/file/d/1F5GoeN_-0d1NlI7jnxCjBKJHthOO0Bk1](https://drive.google.com/file/d/1F5GoeN_-0d1NlI7jnxCjBKJHthOO0Bk1)
 
 - Linux: [https://drive.google.com/file/d/19j9jLHTMItYzpvW5AvbufL0z1VLRaVST](https://drive.google.com/file/d/19j9jLHTMItYzpvW5AvbufL0z1VLRaVST)
+
+<details>
+  <summary>
+        Google-Drive folder with all the versions:
+  </summary>
+[https://drive.google.com/drive/folders/1kj8vKwkhwvW7axFQb2WgCxjInvUP-KRc?usp=sharing](https://drive.google.com/drive/folders/1kj8vKwkhwvW7axFQb2WgCxjInvUP-KRc?usp=sharing)
+</details>
+
 
 Then you need to extract it under the directory `simulator` in this project directory. So that the structure looks like this
 
