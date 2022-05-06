@@ -32,7 +32,7 @@ if __name__ == "__main__":
 		# We send the action to the game and recieve the new state
 		state 	= game_connection.do_action(action)
 
-
+		print(state)
 		if (state.winner is not None):
 			game_over = True
 			print(f"The winner is {state.winner}")
