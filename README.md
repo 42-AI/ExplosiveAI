@@ -78,16 +78,10 @@ chmod +x simulator/build/bomber.x86_64
 pip uninstall bomberman 
 ```
 
-You may now build the wheel (the type of file that pip uses to install a package)
-
-```sh
-python3.8 -m build 
-```
-
 You may now install our ***beautiful*** package
 
 ```sh
-python3.8 -m pip install dist/bomberman-0.1.0-py3-none-any.whl
+python3.8 -m pip install -e .
 ```
 
 <br/>
