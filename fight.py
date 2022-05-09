@@ -32,7 +32,7 @@ class Fight():
 
 			# Player 2
 			action_2 = self.agent_2.get_action(state_2)
-			state_2 = self.env_2.do_action(0)
+			state_2 = self.env_2.do_action(action_2)
 
 			# b, pp, w = state_2
 			# s = State(b, pp, w)
@@ -65,5 +65,5 @@ if __name__ == "__main__":
 
 	print_classes(i)
 
-	fff = Fight(BobAgent, NoSuicide)
+	fff = Fight(BobAgent, BobAgent)
 	fff.fight()
