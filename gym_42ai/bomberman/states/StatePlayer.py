@@ -1,11 +1,28 @@
 from typing import Dict, Tuple
 from colorama import Back
 
+
+zero_player = {'type': 0,
+ 'is_player': True,
+ 'age': '',
+ 'position': {
+	'x': 0,
+	'y': 0,
+	'z': 0
+},
+ 'playerNumber': 0,
+ 'moveSpeed': 0,
+ 'bombs': 0,
+ 'bombRange': 0,
+ 'dead': True,
+ 'bombPrefab': {'instanceID': 17554}
+}
+
 class StatePlayer:
 	'''StatePlayer containing all the player information
 
 	player_num: int
-		Categorical value [-1, 1, 2]
+		Categorical value [-1,1,2]
 
 	moveSpeed: float
 		Player movement speed
@@ -32,7 +49,7 @@ class StatePlayer:
 	enemy: bool
 		False if it is the player controlled by the current client
 	'''
-	def __init__(self, json_state : Dict, num = -1):
+	def __init__(self, json_state : Dict = zero_player, num = -1):
 		self.update_state(json_state=json_state)
 		self.enemy		= self.player_num != num
 
