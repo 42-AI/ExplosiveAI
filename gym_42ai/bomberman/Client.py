@@ -121,8 +121,8 @@ class  Client():
 			
 			x, y = get_item_position(item)
 			item_type = item["type"]
-			if (item_type == 2):
-				print(item)
+			# if (item_type == 2):
+			# 	print(item)
 			if item.get("is_player", False) == False:
 				self.board[y][x] = defines.dic_item_type_to_str[item_type]
 
